@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { search, tag, check, x, file-down } from "lucide-react";
+import { Search, Tag, Check, X, FileDown } from "lucide-react";
 import { toast } from "sonner";
 
 // Mock order data
@@ -208,7 +208,7 @@ function AdminOrders() {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex space-x-2">
             <div className="relative flex-grow">
-              <search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
               <Input
                 type="search"
                 placeholder="Search orders..."
@@ -235,7 +235,7 @@ function AdminOrders() {
           </div>
           
           <Button variant="outline" onClick={handleExportOrders}>
-            <file-down className="h-4 w-4 mr-2" />
+            <FileDown className="h-4 w-4 mr-2" />
             Export
           </Button>
         </div>

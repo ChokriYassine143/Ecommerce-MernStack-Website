@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { help-circle, message-square } from "lucide-react";
+import { HelpCircle, MessageSquare } from "lucide-react";
 
 const faqData = {
   ordering: [
@@ -99,7 +98,7 @@ const FaqPage = () => {
                   <AccordionItem key={index} value={`ordering-${index}`}>
                     <AccordionTrigger className="text-left">
                       <div className="flex items-start">
-                        <help-circle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
+                        <HelpCircle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
                         <span>{item.question}</span>
                       </div>
                     </AccordionTrigger>
@@ -117,7 +116,7 @@ const FaqPage = () => {
                   <AccordionItem key={index} value={`shipping-${index}`}>
                     <AccordionTrigger className="text-left">
                       <div className="flex items-start">
-                        <help-circle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
+                        <HelpCircle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
                         <span>{item.question}</span>
                       </div>
                     </AccordionTrigger>
@@ -135,7 +134,7 @@ const FaqPage = () => {
                   <AccordionItem key={index} value={`returns-${index}`}>
                     <AccordionTrigger className="text-left">
                       <div className="flex items-start">
-                        <help-circle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
+                        <HelpCircle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
                         <span>{item.question}</span>
                       </div>
                     </AccordionTrigger>
@@ -153,7 +152,7 @@ const FaqPage = () => {
                   <AccordionItem key={index} value={`products-${index}`}>
                     <AccordionTrigger className="text-left">
                       <div className="flex items-start">
-                        <help-circle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
+                        <HelpCircle className="h-5 w-5 mr-2 shrink-0 text-green-600" />
                         <span>{item.question}</span>
                       </div>
                     </AccordionTrigger>
@@ -169,7 +168,7 @@ const FaqPage = () => {
         
         <div className="mt-16 max-w-2xl mx-auto p-6 bg-white rounded-lg border shadow-sm">
           <div className="flex items-start mb-6">
-            <message-square className="h-6 w-6 text-green-600 mr-3" />
+            <MessageSquare className="h-6 w-6 text-green-600 mr-3" />
             <div>
               <h2 className="text-xl font-semibold">Still have questions?</h2>
               <p className="text-gray-600 mt-1">Contact our support team and we'll get back to you within 24-48 hours.</p>
