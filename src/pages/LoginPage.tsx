@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -15,7 +14,6 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // If user is already logged in, redirect to account page
   if (user) {
     navigate("/account");
     return null;
@@ -98,7 +96,7 @@ function LoginPage() {
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
                   <Link
-                    to="#"
+                    to="/forgot-password"
                     className="text-sm text-brand-green-600 hover:text-brand-green-700"
                   >
                     Forgot password?

@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -25,6 +24,7 @@ import DealsPage from "./pages/DealsPage";
 import NewArrivalsPage from "./pages/NewArrivalsPage";
 import FaqPage from "./pages/FaqPage";
 import NotFound from "./pages/NotFound";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 
 // Admin pages
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -65,6 +65,7 @@ const App = () => (
                 <Route path="/deals" element={<DealsPage />} />
                 <Route path="/new-arrivals" element={<NewArrivalsPage />} />
                 <Route path="/faq" element={<FaqPage />} />
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminLayout />}>
