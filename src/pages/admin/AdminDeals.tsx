@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,7 +12,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { Tag, Calendar as CalendarIcon, Edit, Trash, X, Plus } from "lucide-react";
+import { Tag, CalendarIcon, Edit, Trash, X, Plus } from "lucide-react";
 import { toast } from "sonner";
 
 const initialDeals = [

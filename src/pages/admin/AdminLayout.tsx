@@ -17,7 +17,19 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/contexts/AuthContext";
-import { ChevronRight, ShoppingBag, Users, Package, ChartBar, Home, Settings, LogOut } from "lucide-react";
+import { 
+  ChevronRight, 
+  ShoppingBag, 
+  Users, 
+  Package, 
+  ChartBar, 
+  Home, 
+  Settings, 
+  LogOut,
+  Tag,
+  Calendar,
+  HelpCircle
+} from "lucide-react";
 
 function AdminLayout() {
   const navigate = useNavigate();
@@ -50,6 +62,12 @@ function AdminLayout() {
         break;
       case "analytics":
         setPageTitle("Analytics");
+        break;
+      case "deals":
+        setPageTitle("Deals & Discounts");
+        break;
+      case "new-arrivals":
+        setPageTitle("New Arrivals");
         break;
       default:
         setPageTitle("Dashboard");
@@ -111,6 +129,24 @@ function AdminLayout() {
                       <Link to="/admin/users" className="flex items-center">
                         <Users className="h-5 w-5 mr-3" />
                         <span>Users</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link to="/admin/deals" className="flex items-center">
+                        <Tag className="h-5 w-5 mr-3" />
+                        <span>Deals & Discounts</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link to="/admin/new-arrivals" className="flex items-center">
+                        <Calendar className="h-5 w-5 mr-3" />
+                        <span>New Arrivals</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
