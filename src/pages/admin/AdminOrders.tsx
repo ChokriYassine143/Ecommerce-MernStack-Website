@@ -141,7 +141,7 @@ function AdminOrders() {
       order.customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.customer.email.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesStatus = statusFilter ? order.status === statusFilter : true;
+    const matchesStatus = statusFilter === "all" || statusFilter === "" ? true : order.status === statusFilter;
     
     return matchesSearch && matchesStatus;
   });
