@@ -17,7 +17,8 @@ function WishlistPage() {
       name: item.name,
       price: item.price,
       image: item.image,
-      quantity: 1
+      quantity: 1,
+      description: item.description
     });
     toast.success(`${item.name} added to cart`);
   };
@@ -29,7 +30,8 @@ function WishlistPage() {
         name: item.name,
         price: item.price,
         image: item.image,
-        quantity: 1
+        quantity: 1,
+        description: item.description
       });
     });
     toast.success("All items added to cart");

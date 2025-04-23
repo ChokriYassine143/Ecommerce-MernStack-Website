@@ -71,12 +71,12 @@ function AdminAnalytics() {
   const getPreviousPeriodTotal = (data: typeof salesData, type: keyof (typeof salesData)[0]) => {
     if (timeRange === "yearly") {
       // No previous year in our mock data, so we'll just use a percentage
-      return data.reduce((acc, curr) => acc + curr[type], 0) * 0.8;
+      return data.reduce((acc, curr) => acc + Number(curr[type]), 0) * 0.8;
     }
     if (timeRange === "quarterly") {
-      return data.slice(-6, -3).reduce((acc, curr) => acc + curr[type], 0);
+      return data.slice(-6, -3).reduce((acc, curr) => acc + Number(curr[type]), 0);
     }
-    return data.slice(-2, -1)[0][type];
+    return Number(data.slice(-2, -1)[0][type]);
   };
 
   const salesGrowth = calculateGrowth(

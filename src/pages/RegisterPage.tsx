@@ -53,7 +53,8 @@ function RegisterPage() {
     if (!validateForm()) return;
     
     try {
-      await register(email, password, firstName, lastName);
+      // Assuming register function just needs email, password, and optional displayName
+      await register(email, password, `${firstName} ${lastName}`);
       navigate("/account");
     } catch (error) {
       console.error("Registration error:", error);

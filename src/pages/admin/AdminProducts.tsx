@@ -47,7 +47,9 @@ function AdminProducts() {
       category: newProduct.category,
       image: newProduct.image || "https://placehold.co/200x200?text=Product+Image",
       featured: newProduct.featured,
-      stock: parseInt(newProduct.stock) || 0
+      stock: parseInt(newProduct.stock) || 0,
+      rating: 0,           // Adding missing required properties
+      reviews: 0
     };
     
     setProducts([...products, product]);

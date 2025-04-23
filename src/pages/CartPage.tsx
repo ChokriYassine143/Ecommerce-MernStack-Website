@@ -67,9 +67,11 @@ function CartPage() {
                         
                         <div className="sm:ml-6 flex-grow">
                           <h3 className="font-medium text-gray-900">{item.name}</h3>
-                          <p className="text-sm text-gray-500 mt-1">
-                            {item.description && item.description.substring(0, 50)}...
-                          </p>
+                          {item.description && (
+                            <p className="text-sm text-gray-500 mt-1">
+                              {item.description.substring(0, 50)}...
+                            </p>
+                          )}
                           
                           <div className="flex flex-wrap items-center justify-between mt-4">
                             <div className="flex items-center border rounded">
