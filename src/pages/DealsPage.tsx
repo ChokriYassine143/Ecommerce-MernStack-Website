@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,9 +7,8 @@ import { Input } from "@/components/ui/input";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { toast } from "sonner";
-import { tag, star, info } from "lucide-react";
+import { Tag, Star, Info } from "lucide-react";
 
-// Mock deals data
 const mockDeals = [
   {
     id: "deal1",
@@ -156,7 +154,6 @@ const DealsPage = () => {
           </div>
         </div>
         
-        {/* Featured Deals */}
         <div className="space-y-10">
           {mockDeals.map(deal => (
             <div key={deal.id} className="bg-white rounded-lg border shadow-sm overflow-hidden">
@@ -212,7 +209,7 @@ const DealsPage = () => {
                                 className="mr-2"
                                 onClick={() => handleAddToWishlist(product)}
                               >
-                                <star className="h-4 w-4 mr-1" />
+                                <Star className="h-4 w-4 mr-1" />
                                 Save
                               </Button>
                               <Button size="sm" onClick={() => handleAddToCart(product)}>
@@ -233,7 +230,7 @@ const DealsPage = () => {
         <div className="mt-10 p-4 bg-blue-50 rounded-lg border border-blue-100">
           <div className="flex items-start">
             <div className="shrink-0 mr-3">
-              <info className="h-5 w-5 text-blue-500" />
+              <Info className="h-5 w-5 text-blue-500" />
             </div>
             <div>
               <h3 className="font-medium text-blue-800">How to use discount codes</h3>

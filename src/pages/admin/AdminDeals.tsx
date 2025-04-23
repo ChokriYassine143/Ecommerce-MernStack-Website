@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,10 +11,9 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { tag, calendar, edit, trash, x, plus } from "lucide-react";
+import { Tag, Calendar as CalendarIcon, Edit, Trash, X, Plus } from "lucide-react";
 import { toast } from "sonner";
 
-// Mock deals data
 const initialDeals = [
   {
     id: "deal1",
@@ -189,7 +187,7 @@ function AdminDeals() {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Manage Deals & Discounts</h1>
         <Button onClick={handleAddNewClick}>
-          <plus className="h-4 w-4 mr-2" />
+          <Plus className="h-4 w-4 mr-2" />
           Add New Deal
         </Button>
       </div>
@@ -234,11 +232,11 @@ function AdminDeals() {
                   </TableCell>
                   <TableCell className="text-right">
                     <Button variant="ghost" size="sm" className="mr-2" onClick={() => handleEditClick(deal)}>
-                      <edit className="h-4 w-4" />
+                      <Edit className="h-4 w-4" />
                       <span className="sr-only">Edit</span>
                     </Button>
                     <Button variant="ghost" size="sm" onClick={() => handleDeleteClick(deal)}>
-                      <trash className="h-4 w-4 text-red-500" />
+                      <Trash className="h-4 w-4 text-red-500" />
                       <span className="sr-only">Delete</span>
                     </Button>
                   </TableCell>
@@ -257,7 +255,6 @@ function AdminDeals() {
         </div>
       </Card>
 
-      {/* Add Deal Dialog */}
       <Dialog open={isAddDealOpen} onOpenChange={setIsAddDealOpen}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
@@ -321,7 +318,7 @@ function AdminDeals() {
                       !formData.startDate && "text-muted-foreground"
                     )}
                   >
-                    <calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     {formData.startDate ? format(formData.startDate, "PPP") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
@@ -347,7 +344,7 @@ function AdminDeals() {
                       !formData.endDate && "text-muted-foreground"
                     )}
                   >
-                    <calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     {formData.endDate ? format(formData.endDate, "PPP") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
@@ -396,7 +393,6 @@ function AdminDeals() {
         </DialogContent>
       </Dialog>
 
-      {/* Edit Deal Dialog */}
       <Dialog open={isEditDealOpen} onOpenChange={setIsEditDealOpen}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
@@ -457,7 +453,7 @@ function AdminDeals() {
                       !formData.startDate && "text-muted-foreground"
                     )}
                   >
-                    <calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     {formData.startDate ? format(formData.startDate, "PPP") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
@@ -483,7 +479,7 @@ function AdminDeals() {
                       !formData.endDate && "text-muted-foreground"
                     )}
                   >
-                    <calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     {formData.endDate ? format(formData.endDate, "PPP") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
@@ -530,7 +526,6 @@ function AdminDeals() {
         </DialogContent>
       </Dialog>
 
-      {/* Delete Deal Dialog */}
       <Dialog open={isDeleteDealOpen} onOpenChange={setIsDeleteDealOpen}>
         <DialogContent>
           <DialogHeader>

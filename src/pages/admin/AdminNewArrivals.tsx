@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,13 +12,13 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { tag, calendar, edit, trash, plus } from "lucide-react";
+import { Tag, Calendar as CalendarIcon, Edit, Trash, Plus } from "lucide-react";
 import { toast } from "sonner";
 
 // Mock categories
 const categories = [
   "Home & Kitchen",
-  "Personal Care",
+  "Personal Care", 
   "Fashion",
   "Zero Waste",
   "Food & Beverage",
@@ -202,7 +201,7 @@ function AdminNewArrivals() {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Manage New Arrivals</h1>
         <Button onClick={handleAddNewClick}>
-          <plus className="h-4 w-4 mr-2" />
+          <Plus className="h-4 w-4 mr-2" />
           Add New Product
         </Button>
       </div>
@@ -273,11 +272,11 @@ function AdminNewArrivals() {
                   </TableCell>
                   <TableCell className="text-right">
                     <Button variant="ghost" size="sm" className="mr-2" onClick={() => handleEditClick(product)}>
-                      <edit className="h-4 w-4" />
+                      <Edit className="h-4 w-4" />
                       <span className="sr-only">Edit</span>
                     </Button>
                     <Button variant="ghost" size="sm" onClick={() => handleDeleteClick(product)}>
-                      <trash className="h-4 w-4 text-red-500" />
+                      <Trash className="h-4 w-4 text-red-500" />
                       <span className="sr-only">Delete</span>
                     </Button>
                   </TableCell>
@@ -380,7 +379,7 @@ function AdminNewArrivals() {
                       !formData.dateAdded && "text-muted-foreground"
                     )}
                   >
-                    <calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     {formData.dateAdded ? format(formData.dateAdded, "PPP") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>
@@ -505,7 +504,7 @@ function AdminNewArrivals() {
                       !formData.dateAdded && "text-muted-foreground"
                     )}
                   >
-                    <calendar className="mr-2 h-4 w-4" />
+                    <CalendarIcon className="mr-2 h-4 w-4" />
                     {formData.dateAdded ? format(formData.dateAdded, "PPP") : <span>Pick a date</span>}
                   </Button>
                 </PopoverTrigger>

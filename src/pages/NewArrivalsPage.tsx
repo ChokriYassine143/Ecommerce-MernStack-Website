@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
-import { tag, calendar } from "lucide-react";
+import { Tag, Calendar } from "lucide-react";
 
 // Mock new arrivals data
 const mockNewArrivals = [
@@ -178,7 +177,7 @@ const NewArrivalsPage = () => {
                           variant="outline" 
                           className="bg-white text-gray-700 flex items-center"
                         >
-                          <calendar className="h-3.5 w-3.5 mr-1" />
+                          <Calendar className="h-3.5 w-3.5 mr-1" />
                           {formatDate(product.dateAdded)}
                         </Badge>
                       </div>
