@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
@@ -7,6 +6,7 @@ export interface WishlistItem {
   name: string;
   price: number;
   image: string;
+  description?: string; // Adding description as optional property
 }
 
 interface WishlistContextType {

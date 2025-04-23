@@ -104,7 +104,7 @@ function AccountPage() {
               <CardHeader className="pb-3">
                 <div className="flex items-center space-x-4">
                   <Avatar className="w-16 h-16">
-                    <AvatarImage src={user?.photoURL as string || undefined} />
+                    <AvatarImage src={(user as any)?.photoURL || undefined} />
                     <AvatarFallback>{profileData.firstName.charAt(0)}{profileData.lastName.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>

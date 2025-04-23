@@ -8,6 +8,7 @@ export interface CartItem {
   price: number;
   image: string;
   quantity: number;
+  description?: string; // Adding description as optional property
 }
 
 interface ShoppingCartContextType {

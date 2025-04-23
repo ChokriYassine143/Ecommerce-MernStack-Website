@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -162,6 +161,7 @@ function CartPage() {
             </div>
           </div>
         ) : (
+          
           <div className="text-center py-16 bg-white rounded-lg border shadow-sm">
             <h2 className="text-2xl font-medium mb-4">Your cart is empty</h2>
             <p className="text-gray-500 mb-8">Looks like you haven't added any items to your cart yet.</p>

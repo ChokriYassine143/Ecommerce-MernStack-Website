@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import MainLayout from "@/components/layout/MainLayout";
 import { useWishlist } from "@/contexts/WishlistContext";
@@ -17,7 +16,6 @@ function WishlistPage() {
       name: item.name,
       price: item.price,
       image: item.image,
-      quantity: 1,
       description: item.description
     });
     toast.success(`${item.name} added to cart`);
@@ -30,7 +28,6 @@ function WishlistPage() {
         name: item.name,
         price: item.price,
         image: item.image,
-        quantity: 1,
         description: item.description
       });
     });
