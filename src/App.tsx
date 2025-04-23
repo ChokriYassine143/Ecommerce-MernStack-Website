@@ -21,6 +21,9 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
+import DealsPage from "./pages/DealsPage";
+import NewArrivalsPage from "./pages/NewArrivalsPage";
+import FaqPage from "./pages/FaqPage";
 import NotFound from "./pages/NotFound";
 
 // Admin pages
@@ -30,6 +33,8 @@ import AdminProducts from "./pages/admin/AdminProducts";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminDeals from "./pages/admin/AdminDeals";
+import AdminNewArrivals from "./pages/admin/AdminNewArrivals";
 
 const queryClient = new QueryClient();
 
@@ -50,12 +55,16 @@ const App = () => (
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
+                <Route path="/track-order" element={<OrderTrackingPage />} />
                 <Route path="/track-order/:id" element={<OrderTrackingPage />} />
                 <Route path="/account" element={<AccountPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/terms" element={<TermsPage />} />
+                <Route path="/deals" element={<DealsPage />} />
+                <Route path="/new-arrivals" element={<NewArrivalsPage />} />
+                <Route path="/faq" element={<FaqPage />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminLayout />}>
@@ -65,6 +74,8 @@ const App = () => (
                   <Route path="orders" element={<AdminOrders />} />
                   <Route path="users" element={<AdminUsers />} />
                   <Route path="analytics" element={<AdminAnalytics />} />
+                  <Route path="deals" element={<AdminDeals />} />
+                  <Route path="new-arrivals" element={<AdminNewArrivals />} />
                 </Route>
                 
                 {/* Catch-all Route */}

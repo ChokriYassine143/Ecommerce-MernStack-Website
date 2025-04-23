@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import { Search, Eye, FileDown } from "lucide-react";
+import { search, tag, check, x, file-down } from "lucide-react";
 import { toast } from "sonner";
 
 // Mock order data
@@ -129,7 +129,7 @@ const mockOrders = [
 function AdminOrders() {
   const [orders, setOrders] = useState(mockOrders);
   const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [selectedOrder, setSelectedOrder] = useState<any>(null);
   const [isViewDialogOpen, setIsViewDialogOpen] = useState(false);
   const [isEditStatusOpen, setIsEditStatusOpen] = useState(false);
@@ -141,7 +141,7 @@ function AdminOrders() {
       order.customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.customer.email.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesStatus = statusFilter === "all" || statusFilter === "" ? true : order.status === statusFilter;
+    const matchesStatus = statusFilter === "all" ? true : order.status === statusFilter;
     
     return matchesSearch && matchesStatus;
   });
@@ -182,7 +182,9 @@ function AdminOrders() {
   const getStatusBadgeVariant = (status: string) => {
     switch (status) {
       case "processing": return "bg-blue-100 text-blue-800";
+      case "confirmed": return "bg-amber-100 text-amber-800";
       case "shipped": return "bg-amber-100 text-amber-800";
+      case "out_for_delivery": return "bg-purple-100 text-purple-800";
       case "delivered": return "bg-green-100 text-green-800";
       case "cancelled": return "bg-red-100 text-red-800";
       default: return "bg-gray-100 text-gray-800";
@@ -206,7 +208,7 @@ function AdminOrders() {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex space-x-2">
             <div className="relative flex-grow">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
+              <search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
               <Input
                 type="search"
                 placeholder="Search orders..."
@@ -223,7 +225,9 @@ function AdminOrders() {
               <SelectContent>
                 <SelectItem value="all">All Statuses</SelectItem>
                 <SelectItem value="processing">Processing</SelectItem>
+                <SelectItem value="confirmed">Confirmed</SelectItem>
                 <SelectItem value="shipped">Shipped</SelectItem>
+                <SelectItem value="out_for_delivery">Out for Delivery</SelectItem>
                 <SelectItem value="delivered">Delivered</SelectItem>
                 <SelectItem value="cancelled">Cancelled</SelectItem>
               </SelectContent>
@@ -231,7 +235,7 @@ function AdminOrders() {
           </div>
           
           <Button variant="outline" onClick={handleExportOrders}>
-            <FileDown className="h-4 w-4 mr-2" />
+            <file-down className="h-4 w-4 mr-2" />
             Export
           </Button>
         </div>
@@ -277,7 +281,6 @@ function AdminOrders() {
                 </TableCell>
                 <TableCell className="text-right">
                   <Button variant="ghost" size="sm" onClick={() => handleViewOrder(order)}>
-                    <Eye className="h-4 w-4 mr-1" />
                     View
                   </Button>
                 </TableCell>
@@ -439,8 +442,14 @@ function AdminOrders() {
                     <SelectItem value="processing" onClick={() => handleUpdateStatus("processing")}>
                       Processing
                     </SelectItem>
+                    <SelectItem value="confirmed" onClick={() => handleUpdateStatus("confirmed")}>
+                      Confirmed
+                    </SelectItem>
                     <SelectItem value="shipped" onClick={() => handleUpdateStatus("shipped")}>
                       Shipped
+                    </SelectItem>
+                    <SelectItem value="out_for_delivery" onClick={() => handleUpdateStatus("out_for_delivery")}>
+                      Out for Delivery
                     </SelectItem>
                     <SelectItem value="delivered" onClick={() => handleUpdateStatus("delivered")}>
                       Delivered

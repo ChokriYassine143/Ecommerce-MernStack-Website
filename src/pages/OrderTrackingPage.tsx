@@ -1,11 +1,12 @@
-
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
-import { Check, Truck, Package, Home } from "lucide-react";
+import { Check, Truck, Package, Home, search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 
 // Mock order status types
 type OrderStatus = "processing" | "confirmed" | "shipped" | "out_for_delivery" | "delivered";
@@ -32,52 +33,102 @@ interface OrderData {
   }>;
 }
 
+// Mock orders data for demonstration
+const mockOrders: OrderData[] = [
+  {
+    id: "ORD10023",
+    status: "shipped",
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    estimatedDelivery: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
+    shippingAddress: {
+      name: "John Doe",
+      street: "123 Eco Street",
+      city: "Green City",
+      state: "Nature State",
+      zipCode: "12345"
+    },
+    items: [
+      {
+        id: "prod1",
+        name: "Bamboo Toothbrush",
+        price: 4.99,
+        quantity: 2,
+        image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+      },
+      {
+        id: "prod2",
+        name: "Reusable Water Bottle",
+        price: 24.99,
+        quantity: 1,
+        image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+      }
+    ]
+  },
+  {
+    id: "ORD10024",
+    status: "delivered",
+    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+    estimatedDelivery: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    shippingAddress: {
+      name: "Jane Smith",
+      street: "456 Green Ave",
+      city: "Eco Town",
+      state: "Sustainable State",
+      zipCode: "67890"
+    },
+    items: [
+      {
+        id: "prod3",
+        name: "Organic Cotton T-shirt",
+        price: 29.99,
+        quantity: 1,
+        image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+      }
+    ]
+  }
+];
+
 function OrderTrackingPage() {
   const { id } = useParams<{ id: string }>();
   const [order, setOrder] = useState<OrderData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [orderIdInput, setOrderIdInput] = useState("");
+  const navigate = useNavigate();
+
+  // Function to handle order tracking submission
+  const handleTrackOrder = () => {
+    if (orderIdInput.trim() === "") {
+      toast.error("Please enter a valid order number");
+      return;
+    }
+    
+    // Navigate to the order tracking page with the entered order ID
+    navigate(`/track-order/${orderIdInput.trim()}`);
+  };
 
   // Simulating API call to fetch order data
   useEffect(() => {
+    // Reset state when ID changes
+    setIsLoading(true);
+    setError("");
+    setOrder(null);
+    
     // Simulate loading
     const timer = setTimeout(() => {
       if (id) {
-        // Mock data for demonstration
-        const mockOrder: OrderData = {
-          id,
-          status: "shipped",
-          createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-          estimatedDelivery: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
-          shippingAddress: {
-            name: "John Doe",
-            street: "123 Eco Street",
-            city: "Green City",
-            state: "Nature State",
-            zipCode: "12345"
-          },
-          items: [
-            {
-              id: "prod1",
-              name: "Bamboo Toothbrush",
-              price: 4.99,
-              quantity: 2,
-              image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-            },
-            {
-              id: "prod2",
-              name: "Reusable Water Bottle",
-              price: 24.99,
-              quantity: 1,
-              image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-            }
-          ]
-        };
+        // Find order in mock data
+        const foundOrder = mockOrders.find(order => order.id === id);
         
-        setOrder(mockOrder);
-        setIsLoading(false);
+        if (foundOrder) {
+          setOrder(foundOrder);
+          setIsLoading(false);
+        } else {
+          setError(`Order #${id} not found`);
+          setIsLoading(false);
+        }
       } else {
-        setError("Invalid order ID");
+        // If no ID is provided, don't show an error as we're on the search page
         setIsLoading(false);
       }
     }, 1000);
@@ -111,6 +162,39 @@ function OrderTrackingPage() {
     return items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   };
 
+  // If we're not loading and there's no ID, show the order lookup form
+  if (!isLoading && !id) {
+    return (
+      <MainLayout>
+        <div className="container mx-auto px-4 py-16">
+          <div className="max-w-md mx-auto bg-white rounded-lg border shadow-sm p-8">
+            <h1 className="text-2xl font-bold mb-6 text-center">Track Your Order</h1>
+            <p className="text-gray-600 mb-6 text-center">
+              Enter your order number to track its status and delivery progress
+            </p>
+            <div className="space-y-4">
+              <div>
+                <Input
+                  placeholder="Order Number (e.g., ORD10023)"
+                  value={orderIdInput}
+                  onChange={(e) => setOrderIdInput(e.target.value)}
+                  className="w-full"
+                />
+              </div>
+              <Button onClick={handleTrackOrder} className="w-full">
+                Track Order
+              </Button>
+            </div>
+            <div className="mt-8 text-center text-sm text-gray-500">
+              <p>Don't have your order number?</p>
+              <p className="mt-1">Check your confirmation email or contact our customer service.</p>
+            </div>
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
+
   if (isLoading) {
     return (
       <MainLayout>
@@ -131,9 +215,14 @@ function OrderTrackingPage() {
         <div className="container mx-auto px-4 py-16 text-center">
           <h2 className="text-2xl font-bold text-red-600 mb-4">Error</h2>
           <p className="text-gray-600 mb-8">{error || "Unable to find the order"}</p>
-          <Button asChild>
-            <a href="/account">Go to Your Account</a>
-          </Button>
+          <div className="space-y-4">
+            <Button onClick={() => navigate("/track-order")} className="mr-2">
+              Try Another Order
+            </Button>
+            <Button asChild variant="outline">
+              <a href="/account">Go to Your Account</a>
+            </Button>
+          </div>
         </div>
       </MainLayout>
     );
@@ -271,7 +360,7 @@ function OrderTrackingPage() {
                 <a href="/account">Order History</a>
               </Button>
               <Button asChild className="w-full">
-                <a href="#contact">Contact Support</a>
+                <a href="/faq">Contact Support</a>
               </Button>
             </div>
           </div>
