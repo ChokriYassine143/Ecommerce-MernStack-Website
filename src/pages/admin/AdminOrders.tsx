@@ -221,7 +221,7 @@ function AdminOrders() {
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Statuses</SelectItem>
+                <SelectItem value="all">All Statuses</SelectItem>
                 <SelectItem value="processing">Processing</SelectItem>
                 <SelectItem value="shipped">Shipped</SelectItem>
                 <SelectItem value="delivered">Delivered</SelectItem>
@@ -436,16 +436,16 @@ function AdminOrders() {
                     <SelectValue placeholder="Select new status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="processing" onSelect={() => handleUpdateStatus("processing")}>
+                    <SelectItem value="processing" onClick={() => handleUpdateStatus("processing")}>
                       Processing
                     </SelectItem>
-                    <SelectItem value="shipped" onSelect={() => handleUpdateStatus("shipped")}>
+                    <SelectItem value="shipped" onClick={() => handleUpdateStatus("shipped")}>
                       Shipped
                     </SelectItem>
-                    <SelectItem value="delivered" onSelect={() => handleUpdateStatus("delivered")}>
+                    <SelectItem value="delivered" onClick={() => handleUpdateStatus("delivered")}>
                       Delivered
                     </SelectItem>
-                    <SelectItem value="cancelled" onSelect={() => handleUpdateStatus("cancelled")}>
+                    <SelectItem value="cancelled" onClick={() => handleUpdateStatus("cancelled")}>
                       Cancelled
                     </SelectItem>
                   </SelectContent>
