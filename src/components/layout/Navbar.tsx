@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -55,6 +54,18 @@ function Navbar() {
               className="text-gray-600 hover:text-brand-green-600 transition-colors"
             >
               Shop
+            </Link>
+            <Link
+              to="/deals"
+              className="text-gray-600 hover:text-brand-green-600 transition-colors"
+            >
+              Deals
+            </Link>
+            <Link
+              to="/new-arrivals"
+              className="text-gray-600 hover:text-brand-green-600 transition-colors"
+            >
+              New Arrivals
             </Link>
           </nav>
 
@@ -184,6 +195,20 @@ function Navbar() {
               onClick={() => setIsMenuOpen(false)}
             >
               Shop
+            </Link>
+            <Link
+              to="/deals"
+              className="block py-2 text-gray-600 hover:text-brand-green-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Deals
+            </Link>
+            <Link
+              to="/new-arrivals"
+              className="block py-2 text-gray-600 hover:text-brand-green-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              New Arrivals
             </Link>
             <Link
               to="/account"

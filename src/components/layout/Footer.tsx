@@ -27,6 +27,12 @@ function Footer() {
                 <Link to="/shop" className="text-gray-600 hover:text-brand-green-600 transition-colors">Shop</Link>
               </li>
               <li>
+                <Link to="/deals" className="text-gray-600 hover:text-brand-green-600 transition-colors">Deals</Link>
+              </li>
+              <li>
+                <Link to="/new-arrivals" className="text-gray-600 hover:text-brand-green-600 transition-colors">New Arrivals</Link>
+              </li>
+              <li>
                 <Link to="/account" className="text-gray-600 hover:text-brand-green-600 transition-colors">Account</Link>
               </li>
               <li>
@@ -39,6 +45,9 @@ function Footer() {
           <div>
             <h3 className="text-base font-semibold mb-4 text-gray-900">Help & Support</h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/faq" className="text-gray-600 hover:text-brand-green-600 transition-colors">FAQ</Link>
+              </li>
               <li>
                 <Link to="/track-order/latest" className="text-gray-600 hover:text-brand-green-600 transition-colors">Track Order</Link>
               </li>
